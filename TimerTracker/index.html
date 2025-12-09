@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Time Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage">
+  <h1>⏱️ Daily Time Tracker</h1>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button onclick="login()">Login / Sign Up</button>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+  <header>
+    <h2>Track Your Day</h2>
+    <button onclick="logout()">Logout</button>
+  </header>
+
+  <section class="controls">
+    <input type="date" id="datePicker" />
+    <p id="remaining">Remaining: 1440 mins</p>
+  </section>
+
+  <section class="add">
+    <input id="title" placeholder="Activity title" />
+    <select id="category">
+      <option>Work</option>
+      <option>Study</option>
+      <option>Sleep</option>
+      <option>Exercise</option>
+      <option>Entertainment</option>
+    </select>
+    <input type="number" id="minutes" placeholder="Minutes" />
+    <button onclick="addActivity()">Add</button>
+  </section>
+
+  <section>
+    <ul id="activityList"></ul>
+  </section>
+
+  <button id="analyseBtn" disabled onclick="analyse()">Analyse</button>
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="hidden">
+    <h3>Analytics Dashboard</h3>
+    <canvas id="pieChart"></canvas>
+  </section>
+
+  <!-- NO DATA -->
+  <section id="noData" class="hidden">
+    <h3>😴 No data available</h3>
+    <p>Start logging your day!</p>
+  </section>
+</div>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
