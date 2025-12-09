@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Daily Tracker</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <h2>Your Daily Tracker</h2>
+      <p class="sub">Log activities and analyze your day</p>
+    </div>
+    <div class="actions">
+      <button id="signOut" class="btn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="container grid">
+    <section class="panel">
+      <h3>Controls</h3>
+      <div class="controls">
+        <label class="input">
+          <span>Date</span>
+          <input type="date" id="datePicker"/>
+        </label>
+        <div id="remaining" class="badge">Remaining: 1440 minutes</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Add activity</h3>
+      <div class="form-grid">
+        <label class="input">
+          <span>Activity name</span>
+          <input id="activityName" placeholder="e.g., Deep work" />
+        </label>
+        <label class="input">
+          <span>Category</span>
+          <input id="activityCategory" placeholder="Work, Study, Sleep, Exercise..." />
+        </label>
+        <label class="input">
+          <span>Minutes</span>
+          <input id="activityMinutes" type="number" min="1" max="1440" placeholder="e.g., 90" />
+        </label>
+        <button id="addActivity" class="btn primary">Add activity</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-row">
+        <h3>Activities</h3>
+        <div class="mini">Total for date must be ≤ 1440 minutes</div>
+      </div>
+      <ul id="activities" class="list"></ul>
+    </section>
+
+    <section class="panel">
+      <div class="panel-row">
+        <h3>Analyze</h3>
+      </div>
+      <button id="analyseBtn" class="btn accent" disabled>Analyse</button>
+    </section>
+
+    <section class="panel">
+      <div class="panel-row">
+        <h3>Dashboard</h3>
+        <div class="mini">Select a date to view analytics</div>
+      </div>
+
+      <div id="dashboardWrap">
+        <div id="noData" class="nodata hidden">
+          <div class="emoji">📭</div>
+          <div class="title">No data available for this date</div>
+          <div class="text">Start logging your day now.</div>
+        </div>
+
+        <div id="dashboard" class="dashboard hidden">
+          <div class="summary">
+            <p><strong>Total hours:</strong> <span id="totalHours">0.00h</span></p>
+            <p><strong>Activities:</strong> <span id="activityCount">0</span></p>
+          </div>
+          <canvas id="pieChart" width="320" height="320"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>Made with Firebase + Chart.js</div>
+  </footer>
+
+  <script type="module" src="../src/app.js"></script>
+</body>
+</html>
